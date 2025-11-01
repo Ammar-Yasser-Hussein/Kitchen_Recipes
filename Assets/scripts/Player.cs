@@ -35,6 +35,8 @@ public class player_script : MonoBehaviour
 
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
         transform.position += moveDir * speed * Time.deltaTime;
+
+        transform.forward = moveDir;
         }
 
 
