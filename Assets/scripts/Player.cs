@@ -9,10 +9,24 @@ public class player_script : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField ] private GameInput gameInput;
     private void Update() {
-        Vector2 inputVector = gameInput.GetMovementVectorNormalized();  
+        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
- 
-        transform.position += moveDir * move_speed * Time.deltaTime;
+
+        float moveDistance = move_speed * Time.deltaTime;
+        float playerRadius = .7f;
+        float playerHeight = 2f;
+        bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDir,  moveDistance);
+
+        if (canMove)
+        {
+         transform.position += moveDir * moveDistance;
+        }
+
+
+
+
+
 
 
         isWalking = moveDir != Vector3.zero;
