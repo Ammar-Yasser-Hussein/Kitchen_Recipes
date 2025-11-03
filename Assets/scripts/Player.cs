@@ -7,21 +7,20 @@ public class player_script : MonoBehaviour
     private bool isWalking;
     [SerializeField] private float move_speed = 7f;
     [SerializeField] private Animator animator;
-    [SerializeField ] private GameInput gameInput;
-    private void Update() {
+    [SerializeField] private GameInput gameInput;
+    private void Update()
+    {
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
-
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
 
         float moveDistance = move_speed * Time.deltaTime;
         float playerRadius = .7f;
         float playerHeight = 2f;
-        bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDir,  moveDistance);
-
+        bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDir, moveDistance);
 
         if (!canMove)
         {
-            Vector3 moveDirX = new Vector3(moveDir.x, 0, 0);
+            Vector3 moveDirX = new Vector3(moveDir.x, 0, 0).normalized;
             canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirX, moveDistance);
 
             if (canMove)
@@ -30,41 +29,23 @@ public class player_script : MonoBehaviour
             }
             else
             {
-                Vector3 moveDirZ = new Vector3(0, 0, moveDir.z);
+                Vector3 moveDirZ = new Vector3(0, 0, moveDir.z).normalized;
                 canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirZ, moveDistance);
 
                 if (canMove)
                 {
                     moveDir = moveDirZ;
                 }
-                else {
-                    //cannot move in either direction
-                 }
-
+                else { }
             }
         }
-
-
-
-
-
-
-
-
 
         if (canMove)
         {
             transform.position += moveDir * moveDistance;
         }
-
-
-
-
-
-
-
         isWalking = moveDir != Vector3.zero;
-        
+
         if (isWalking)
         { animator.SetBool("IsWalking", true); }
         else
@@ -72,13 +53,12 @@ public class player_script : MonoBehaviour
 
         float RotationSpeed = 10f;
         transform.forward = Vector3.Slerp(transform.forward, moveDir, RotationSpeed * Time.deltaTime);
-
-        }
+    }
 
     public bool IsWalking()
     {
         return isWalking;
     }
 
-
 }
+
