@@ -14,3 +14,5 @@ This project I made while learning Unity from scratch.
 - Left --> Move left
 
 - Left stick (Controllers) --> Move
+
+- E --> Interact with object
