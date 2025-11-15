@@ -17,7 +17,7 @@ public class KitchenObject : MonoBehaviour
     {
         if (this.kitchenObjectParent !=  null)
         {
-            this.kitchenObjectParent.clearkitchenObject();
+            this.kitchenObjectParent.ClearkitchenObject();
         }
 
         this.kitchenObjectParent = kitchenObjectParent;
