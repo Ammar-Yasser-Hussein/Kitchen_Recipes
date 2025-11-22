@@ -8,7 +8,7 @@ public class SelectedCounterVisual : MonoBehaviour
     [SerializeField] public GameObject[] visualGameObjectArray;
 
 
-    private void Awake()
+    private void Start()
     {
       Player.Instance.OnSelectedCounterChanged += Player_OnSelectedCounterChanged;
         
@@ -18,12 +18,10 @@ public class SelectedCounterVisual : MonoBehaviour
         if (e.selectedCounter == baseCounter)
         {
             Show();
-            Debug.Log("showing selected counter visual");
         }
         else
         {
             Hide();
-            Debug.Log("hiding selected counter visual");
         }
     }
 
