@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b2ae927660a7374db2a48a6155618ec, type: 3}
+  m_Name: MeatPattyBurned
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2525571721748485134, guid: 5723f85401528f9458caeb4aa0530565, type: 3}
+  sprite: {fileID: 21300000, guid: 713ea9afa60dd6e4ebf6503a33e8cc99, type: 3}
+  objectname: MeatPattyBurned
